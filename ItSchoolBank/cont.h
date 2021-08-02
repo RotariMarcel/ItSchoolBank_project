@@ -15,7 +15,7 @@ private:
 	std::string prenume;
 	TIP_CONT etipCont;
 	std::string IBAN;
-	float sold;
+	int sold;
 
 public:
 
