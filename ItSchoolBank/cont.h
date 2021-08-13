@@ -1,5 +1,7 @@
 #pragma once
 #include<string>
+#include <vector>
+#include <iostream>
 
 enum class TIP_CONT
 {
@@ -15,14 +17,14 @@ private:
 	std::string prenume;
 	TIP_CONT etipCont;
 	std::string IBAN;
-	int sold;
+	float sold;
 
 public:
 
 	ContBancar(std::string nume, std::string prenume, std::string IBAN);
 	inline std::string getNume() {	return nume;} 
 	inline std::string getPrenume() { return prenume; }
-	inline int getSold() { return sold; }
+	inline float getSold() { return sold; }
 	inline std::string getIBAN() { return IBAN; }
 	inline void setSoldValue(int value) { sold = value; }
 

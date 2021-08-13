@@ -1,4 +1,3 @@
-
 #include <iostream>
 #include<string>
 
@@ -7,99 +6,6 @@
 
 
 
-
-
-/*
-void parolaId()
-{
-    bool merge = true;
-    do
-    {
-        system("CLS");
-
-        std::string parola = "banca1";
-        std::string user = "Marcel";
-        int numarIncercari = { 3 };
-        for (int i = numarIncercari; i >= 0; i--)
-        {
-
-            std::cout << "Introduceti datele de acces: \n";
-
-            std::cout << "User id ";
-            std::string userId;
-            std::getline(std::cin, userId);
-            std::cout << "Parola ";
-            std::string par;
-            std::getline(std::cin, par);
-            if (userId == user && par == parola) {
-                system("CLS");
-
-                interfataUtilizator();
-
-            }
-
-            else {
-                system("CLS");
-                std::cout << "Date de acces incorecte!\n";
-                std::cout << std::endl;
-                std::cout << "Incercari ramase: " << i << std::endl;
-                if (i == 0) {
-                    std::cout << "User Id sau parola gresita! Va rugam contactati administratorul.\n";
-                    std::exit(0);
-                }
-            }
-        }
-    } while (merge);
-
-}
-*/
-
-
-/*
-void interfataUtilizator();
-
-void parolaId()
-{
-    bool merge = true;
-    do
-    {
-        system("CLS");
-
-        std::string parola = "banca1";
-        std::string user = "Marcel";
-        int numarIncercari = { 3 };
-        for (int i = numarIncercari; i >=0; i--)
-        {
-
-            std::cout << "Introduceti datele de acces: \n";
-
-            std::cout << "User id ";
-            std::string userId;
-            std::getline(std::cin, userId);
-            std::cout << "Parola ";
-            std::string par;
-            std::getline(std::cin, par);
-            if (userId == user && par == parola) {
-                system("CLS");
-
-                interfataUtilizator();
-
-            }
-
-            else {
-                system("CLS");
-                std::cout << "Date de acces incorecte!\n";
-                std::cout << std::endl;
-                std::cout << "Incercari ramase: " << i << std::endl;
-                if (i == 0) {
-                    std::cout << "User Id sau parola gresita! Va rugam contactati administratorul.\n";
-                    std::exit(0);
-                }
-            }
-        }
-    } while (merge);
-
-}
 
 void interfataUtilizator() {
     bank* ItSchoolBank = new bank(); // instantam o banca
@@ -141,7 +47,7 @@ void interfataUtilizator() {
             std::cout << "Va multumim!\n";
             isRunning = false;
             system("CLS");
-            parolaId();
+            
             break;
         default:
             std::cout << "Optiunea nu este valida.\n";
@@ -154,14 +60,9 @@ void interfataUtilizator() {
 
     delete ItSchoolBank;
 }
-
-*/
-
-
-int main()
-
+/*
+void parolaId()
 {
-    bank* ItSchoolBank = new bank();
     bool merge = true;
     do
     {
@@ -184,7 +85,7 @@ int main()
             if (userId == user && par == parola) {
                 system("CLS");
 
-                ItSchoolBank -> meniuPrincipal();
+                interfataUtilizator();
 
             }
 
@@ -200,7 +101,9 @@ int main()
             }
         }
     } while (merge);
-    delete ItSchoolBank;
+
 }
+
+*/
 
 

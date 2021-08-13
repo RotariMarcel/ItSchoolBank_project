@@ -139,11 +139,17 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="bank.cpp" />
     <ClCompile Include="cont.cpp" />
     <ClCompile Include="ItSchoolBank.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="bank.h" />
     <ClInclude Include="cont.h" />
+    <ClInclude Include="resource.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="ItSchoolBank.rc" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -1,5 +1,6 @@
 #include "cont.h"
 
+
 ContBancar::ContBancar(std::string nume, std::string prenume, std::string IBAN)
 {
 	this->nume = nume;
@@ -8,3 +9,10 @@ ContBancar::ContBancar(std::string nume, std::string prenume, std::string IBAN)
 	sold = 0;
 	etipCont = TIP_CONT::CONT_RON;
 }
+
+ContBancar::~ContBancar()
+{
+	// ContBancar.clear();
+}
+
+
