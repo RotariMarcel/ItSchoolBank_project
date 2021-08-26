@@ -7,12 +7,14 @@ ContBancar::ContBancar(std::string nume, std::string prenume, std::string IBAN)
 	this->prenume = prenume;
 	this->IBAN = IBAN;
 	sold = 0;
-	etipCont = TIP_CONT::CONT_RON;
+	etipCont;// = TIP_CONT::CONT_RON;
 }
 
 ContBancar::~ContBancar()
 {
 	// ContBancar.clear();
 }
+
+
 
 

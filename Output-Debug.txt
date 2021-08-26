@@ -1,0 +1,14 @@
+﻿'mostenirea.exe' (Win32): Loaded 'C:\Users\Lenovo\source\repos\mostenirea\Debug\mostenirea.exe'. Symbols loaded.
+'mostenirea.exe' (Win32): Loaded 'C:\Windows\SysWOW64\ntdll.dll'. 
+'mostenirea.exe' (Win32): Loaded 'C:\Windows\SysWOW64\kernel32.dll'. 
+'mostenirea.exe' (Win32): Loaded 'C:\Windows\SysWOW64\KernelBase.dll'. 
+'mostenirea.exe' (Win32): Loaded 'C:\Windows\SysWOW64\msvcp140d.dll'. 
+'mostenirea.exe' (Win32): Loaded 'C:\Windows\SysWOW64\vcruntime140d.dll'. 
+'mostenirea.exe' (Win32): Loaded 'C:\Windows\SysWOW64\ucrtbased.dll'. 
+The thread 0x31cc has exited with code 0 (0x0).
+'mostenirea.exe' (Win32): Loaded 'C:\Windows\SysWOW64\kernel.appcore.dll'. 
+'mostenirea.exe' (Win32): Loaded 'C:\Windows\SysWOW64\msvcrt.dll'. 
+'mostenirea.exe' (Win32): Loaded 'C:\Windows\SysWOW64\rpcrt4.dll'. 
+The thread 0xb24 has exited with code 0 (0x0).
+The thread 0x3110 has exited with code 0 (0x0).
+The program '[12004] mostenirea.exe' has exited with code 0 (0x0).

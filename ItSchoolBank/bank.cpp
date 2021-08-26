@@ -4,37 +4,92 @@
 #include<ctime>
 
 
+
 std::string bank::createIban()
 {
-
-	std::string iban="123";
-	/*
-	* DE CAUTAT MOD DE STOCARE NUMAR GENERAT RANDOM
 	
-	std::vector<std::string> random;
-	*/
+	std::string iban = "RO_51_ITSCB";
+	std::string ron;
+	std::string euro;
+	std::string dolar;
+	TIP_CONT valutaCont{ etipCont() };
+	switch (valutaCont)
+	{
+	case TIP_CONT::CONT_RON:
+		
+	ron = "_RON_";
+	iban += ron; 
+	break;
+	case TIP_CONT::CONT_EURO:
+		
+	euro = "_EUR_";
+	iban += euro; 
+	break;
+	case TIP_CONT::CONT_DOLAR:
+	
+	dolar = "_USD_";
+	iban += dolar; 
+	break;
+	default:
+		break;
+	}
 	int randomN = 0;
 	std::srand(time(0));
 	for (int i = 0; i <10; i++) {
-		
+
 		 randomN = (rand() % 10);
-			
+			iban += std::to_string(randomN);
+	
 	}
-	std::cout << "Numar random: " << randomN;
-	
-	//random.push_back(randomN);
-	/*
-	for (auto it = random.begin(); it != random.end(); it++) {
-		std::cout<<"NUmar " << *it;
-	}
-	std::cout << std::endl;
-	std::cout << "Numarul este "<< randomN;
-	
-	*/
 	
 	
+
 	return iban;
 }
+
+void bank::setSoldValue()
+{
+	float sold = 160;
+	float value = sold;
+}
+
+TIP_CONT bank::etipCont()
+{
+	std::cout << "Selectati valuta contului\n";
+	std::cout << "1 -> EURO\n";
+	std::cout << "2 -> RON\n";
+	std::cout << "3 -> USD\n";
+	int moneda = 0;
+	std::cin >> moneda;
+	switch (moneda)
+	{
+		case '1':
+			return TIP_CONT::CONT_EURO;
+			break;
+		case '2':
+			return TIP_CONT::CONT_RON;
+			break;
+		case '3':
+			return TIP_CONT::CONT_DOLAR;
+			break;
+		default:
+		break;
+	}
+
+	
+}
+
+/*
+void bank::setArhiva(std::string arhivaBanca, std::vector<std::pair<std::string, std::vector<std::string>>> dataset)
+{
+}
+*/
+
+
+
+
+
+
 
 bank::bank()
 {
@@ -48,16 +103,39 @@ bank::~bank()
 void bank::adaugareCont()
 {
 	system("CLS");
+	
 	std::cout << "Introduceti numele utilizatorului: \n";
 	std::string nume;
 	std::cin >> nume;
 	std::cout << "Introduceti prenumele utilizatorului: \n";
 	std::string prenume;
 	std::cin >> prenume;
-	std::cout << "IBAN alocat: \n";
 	std::string IBAN = createIban();
 	ContBancar* cont = new ContBancar(nume, prenume, IBAN);
 	m_ConturiBancare.push_back(cont);
+	
+	//adaugare in arhiva csv
+	//arhiva::scrieArhiva("ArhivaConturiBanca.csv", cont);
+	
+	
+	
+	/*
+	for (int i = 0; i < m_ConturiBancare.size(); i++)
+	{
+		std::string indexB;
+		indexB += std::to_string(i + 1);
+		m_ConturiBancare[i]->getNume();
+		m_ConturiBancare[i]->getPrenume();
+		m_ConturiBancare[i]->getIBAN();
+
+		std::vector<std::pair<std::string, std::string>> tabel = { { "Index banca", indexB } , { "Nume",m_ConturiBancare[i]->getNume() }, { "Prenume",m_ConturiBancare[i]->getPrenume() }, { "Iban",m_ConturiBancare[i]->getIBAN() } };
+		arhiva::setArhiva("ArhivaConturiBanca.csv", tabel);
+	}
+	*/
+	
+
+	// sfarsit adaugare in arhiva csv
+	
 	std::cout << std::endl;
 	std::cout << "1 -> pentru crearea a unui cont nou\n";
 	std::cout << "2 - > pentru meniul principal\n";
@@ -77,19 +155,23 @@ void bank::adaugareCont()
 		
 		break;
 	}
+	
 }
 
 void bank::vizualizareConturi()
 {
 	system("CLS");
-	std::cout << "Numar conturi active: \n"<< m_ConturiBancare.size()<<std::endl;
+	
+	std::cout << "Numar conturi active: "<< m_ConturiBancare.size()<<std::endl;
+	std::cout << std::endl;
 	for (int i = 0; i < m_ConturiBancare.size(); i++)
 	{
-		//std::cout << "Contul " << i+1 << " " << m_ConturiBancare[i]->getNume()<<std::endl;
-		std::cout << "Contul " << i + 1 << " " << m_ConturiBancare[i]->getNume() << m_ConturiBancare[i]->getSold() << std::endl;
-		//std::cout << "Solduri " <<i+1<< m_ConturiBancare[i]->getSold() << std::endl;
-
+		std::cout << "Contul " << i + 1 << " " << m_ConturiBancare[i]->getNume() <<
+			" " << m_ConturiBancare[i]->getPrenume()<<" Sold: "<< m_ConturiBancare[i]->getSold() <<
+			" IBAN "<<m_ConturiBancare[i]->getIBAN() << std::endl;
+		
 	}
+	std::cout << std::endl;
 	std::cout << "1 -> pentru crearea a unui cont nou\n";
 	std::cout << "2 - > pentru meniul principal\n";
 	char optiune;
@@ -177,11 +259,11 @@ void bank::modificareCont()
 		
 		std::cout << "Ce modificari vreti sa faceti?\n";
 		std::cout << "1 -> Pentru stergere cont\n";
-		std::cout << "2 -> Modificare nume\n";
-		std::cout << "3 -> Modificare prenume\n";
-		std::cout << "4 -> Depunere suma\n";
-		std::cout << "5 -> Retragere suma\n";
-		std::cout << "6 -> Adaugare IBAN \n";
+		std::cout << "2 -> Operatiuni\n";
+		std::cout << "3 -> Modificare nume\n";
+		std::cout << "4 -> Modificare prenume\n";
+		//std::cout << "5 -> Retragere suma\n";
+		std::cout << "5 -> Adaugare IBAN \n";
 		std::cout << "9 -> Meniu principal\n";
 		char optiune;
 		std::cin >> optiune;
@@ -192,6 +274,17 @@ void bank::modificareCont()
 			m_ConturiBancare.erase(it);
 			meniuPrincipal();
 			break;
+		case '2':
+			operatiuni();
+			break;
+		case '3':
+			break;
+		case '4':
+			break;
+		case '5':
+			system("CLS");
+			createIban();
+			break;
 		case'9':
 			meniuPrincipal();
 			break;
@@ -199,22 +292,12 @@ void bank::modificareCont()
 			break;
 		}
 		
-		
-		/*1 modificati nume
-		2 modificati prenume
-		3 modificati suma
-		4 modificati parola
-		modificati etc..
-		5 stergeti contul*/
 
 	}
 	std::cin.clear();
 	std::cin.ignore(std::numeric_limits<std::streamsize>::max());
 	std::cin.get();
-		// daca exista intrebam ce modificari facem
-		// daca nu exista spunem ca nu exista si dam urmatoarele optiuni:
-		//return to main
-		//creati un cont
+		
 }
 
 void bank::meniuPrincipal()
@@ -272,10 +355,21 @@ void bank::meniuPrincipal()
 	//delete ItSchoolBank;
 }
 
-float bank::sold()
+float bank::operatiuni()
 {
-	int sold = 0;
-	std::cout << "Sold = ";
+	system("CLS");
+	/*
+	float sIban = 0;
+	for (int i = 0; i < m_ConturiBancare.size(); i++) {
+
+		float sIban = m_ConturiBancare[i]->getSold();
+
+	}
+	float sold =  sIban;
+	*/
+	
+	float sold = 0;
+	std::cout << "Sold = "<< sold<<std::endl;
 	std::cout << "1 -> Pentru depozit\n";
 	std::cout << "2 -> Pentru retragere\n";
 	std::cout << "3 -> Vizualizare conturi\n";
@@ -288,6 +382,9 @@ float bank::sold()
 		float depunere;
 		std::cin >> depunere;
 		sold += depunere;
+		std::cout << "Sold nou " << sold << std::endl;
+		system("CLS");
+		vizualizareConturi();
 		break;
 	case '2':
 		if (sold != 0) {
@@ -296,23 +393,52 @@ float bank::sold()
 			std::cin >> retragere;
 			if (retragere > sold) {
 				sold -= retragere;
+				std::cout << "Sold nou " << sold << std::endl;
+				system("CLS");
+				vizualizareConturi();
+				break;
 			}
 			else {
-				std::cout << "Introduceti alta suma \n";
-				
+				std::cout << "Nu aveti suficiente fonduri pentru aceasta operatiune\n";
+				std::cout<< "Introduceti alta suma \n";
+				vizualizareConturi();
+				break;
 			}
 		
 		}
 		else {
 			std::cout << "Nu aveti fonduri\n";
+			vizualizareConturi();
+			break;
 		}
 	case '3':
 		vizualizareConturi();
+		break;
+	case '4':
+		meniuPrincipal();
 		break;
 	default:
 		break;
 	}
 	return 0;
 }
+
+/*
+void bank::soldCont()
+{
+
+	float sold = 130;
+
+	for (int i = 0; i < m_ConturiBancare.size(); i++) {
+
+		sold = m_ConturiBancare[i]->getSold();
+
+	}
+	float soldActual = sold;
+}
+*/
+
+
+
 
 

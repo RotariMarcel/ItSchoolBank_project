@@ -3,11 +3,9 @@
 #include<string>
 
 #include "bank.h"
-#include "cont.h"
-
-
-
-
+//#include "cont.h"
+#include<fstream>
+#include"arhiva.h"
 
 /*
 void parolaId()
@@ -161,12 +159,43 @@ void interfataUtilizator() {
 int main()
 
 {
+    
+    
     bank* ItSchoolBank = new bank();
     bool merge = true;
+    
+
+    /*
+    std::ofstream test("BazeDeDate.csv");
+
+    test << "Test\n";
+    test << "1\n";
+    test << "2\n";
+
+    test.close();
+    std::ifstream testCitire("BazeDeDate.csv");
+
+    if (!testCitire.is_open()) {
+        std::cout << "Fisierul nu poate fi deschis\n";
+
+    }
+    if (testCitire.good()) {
+        std::string line;
+        while (std::getline(testCitire,line))
+        {
+            std::cout << line << std::endl;
+        }
+    }
+    testCitire.close();
+
+
+    */
+
+
     do
     {
         system("CLS");
-
+        
         std::string parola = "banca1";
         std::string user = "Marcel";
         int numarIncercari = { 3 };

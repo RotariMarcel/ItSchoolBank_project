@@ -26,8 +26,9 @@ public:
 	inline std::string getPrenume() { return prenume; }
 	inline float getSold() { return sold; }
 	inline std::string getIBAN() { return IBAN; }
-	inline void setSoldValue(int value) { sold = value; }
-
+	inline void setSoldValue(float value) { sold = value; }
+	
+	
 	~ContBancar();
 
 };
